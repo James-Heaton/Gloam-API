@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from gloamapi.models import Area, CharacterType, Trait
+from gloam_api_app.models import Area, CharacterType, Trait
 
 
 class Command(BaseCommand):
