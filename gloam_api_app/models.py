@@ -41,20 +41,35 @@ class Character(models.Model):
     hp = models.IntegerField()
     mp = models.IntegerField()
     current_area = models.ForeignKey(
-        Area, on_delete=models.PROTECT, related_name="characters"
+        Area, on_delete=models.PROTECT, related_name="characters", null=True, blank=True
     )
     is_active = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         """Set HP, MP, and starting area on creation if not provided"""
-        if not self.pk:  # Only on creation
+        is_new = not self.pk  # Check if this is a new character
+
+        if is_new:
             if not self.hp:
                 self.hp = self.character_type.max_hp
             if not self.mp:
                 self.mp = self.character_type.max_mp
             if not self.current_area_id:
                 self.current_area_id = 1
+
         super().save(*args, **kwargs)
+
+        # If this is a new character, automatically set it as active
+        if is_new:
+            self.set_active()
+
+    def set_active(self):
+        """Set this character as active, deactivating all others for this user"""
+        # Deactivate all other characters for this user
+        Character.objects.filter(user=self.user).exclude(pk=self.pk).update(is_active=False)
+        # Activate this character
+        self.is_active = True
+        self.save(update_fields=['is_active'])  # Only update is_active to avoid recursion
 
     @property
     def max_hp(self):
