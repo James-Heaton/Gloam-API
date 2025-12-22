@@ -42,7 +42,6 @@ class CharacterSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "hp", "mp", "current_area", "is_active"]
         extra_kwargs = {
             'user': {'write_only': True},  # User is write-only (don't show in responses)
-            'name': {'read_only': True}  # User cannot change name of character
         }
 
     def get_traits(self, obj):
@@ -77,7 +76,7 @@ class CharacterSerializer(serializers.ModelSerializer):
 
         # Update basic fields
         for attr, value in validated_data.items():
-            if attr != 'user': # Don't allow changing user
+            if attr not in ['user', 'name']:
                 if getattr(instance, attr) != value:
                     character_changed = True
                     setattr(instance, attr, value)
