@@ -5,11 +5,59 @@ from django.contrib.auth.models import User
 
 
 class Area(models.Model):
+    area_number = models.IntegerField(unique=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
 
+    class Meta:
+        ordering = ['area_number']
+
     def __str__(self):
-        return self.name
+        return f"Area {self.area_number}: {self.name}"
+
+
+class Action(models.Model):
+    ACTION_TYPES = [
+        ('safe', 'Safe'),
+        ('risky', 'Risky'),
+        ('magic', 'Magic'),
+    ]
+
+    area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='actions')
+    action_text = models.TextField()
+    action_type = models.CharField(max_length=10, choices=ACTION_TYPES)
+    destination_area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='destination_for')
+    order = models.IntegerField()  # 1, 2, 3, or 4
+
+    # For magic actions
+    mp_cost = models.IntegerField(default=0)
+
+    # For risky actions - outcome texts
+    failure_text = models.TextField(blank=True)
+    failure_damage = models.IntegerField(default=0)
+    mixed_text = models.TextField(blank=True)
+    mixed_damage = models.IntegerField(default=0)
+    success_text = models.TextField(blank=True)
+
+    # For risky actions - mixed outcome rewards
+    mixed_hp_reward = models.IntegerField(default=0)
+    mixed_mp_reward = models.IntegerField(default=0)
+    mixed_gp_reward = models.IntegerField(default=0)
+
+    # For risky actions - success outcome rewards
+    success_hp_reward = models.IntegerField(default=0)
+    success_mp_reward = models.IntegerField(default=0)
+    success_gp_reward = models.IntegerField(default=0)
+
+    # Special flags
+    instant_death_on_failure = models.BooleanField(default=False)
+
+
+    class Meta:
+        ordering = ['area', 'order']
+
+    def __str__(self):
+        return f"{self.area.name} - Action {self.order} ({self.action_type})"
 
 
 class CharacterType(models.Model):
@@ -40,10 +88,12 @@ class Character(models.Model):
     )
     hp = models.IntegerField()
     mp = models.IntegerField()
+    gp = models.IntegerField(default=0)
     current_area = models.ForeignKey(
         Area, on_delete=models.PROTECT, related_name="characters", null=True, blank=True
     )
     is_active = models.BooleanField(default=False)
+    stealthy_used = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         """Set HP, MP, and starting area on creation if not provided"""
@@ -82,9 +132,12 @@ class Character(models.Model):
         return self.character_type.max_mp
 
     def reset_to_defaults(self):
-        """Reset character HP/MP to max values"""
+        """Reset character to starting state for new game"""
         self.hp = self.character_type.max_hp
         self.mp = self.character_type.max_mp
+        self.gp = 0
+        self.current_area_id = 1
+        self.stealthy_used = False
         self.save()
 
     def __str__(self):
