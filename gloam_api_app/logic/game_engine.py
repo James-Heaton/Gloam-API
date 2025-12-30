@@ -6,7 +6,7 @@ def check_game_status(character):
     """Check if game is over (victory or defeat)"""
     if character.hp <= 0:
         return 'defeat'
-    elif character.current_area.area_number == 40:
+    elif character.current_area.area_number == 41:
         return 'victory'
     else:
         return 'playing'
@@ -19,18 +19,32 @@ def get_game_state(character):
     """
     status = check_game_status(character)
 
+    # Build character stats with all necessary data
+    character_stats = {
+        'id': character.id,
+        'name': character.name,
+        'character_type_name': character.character_type.name,
+        'hp': character.hp if status != 'defeat' else 0,
+        'mp': character.mp,
+        'gp': character.gp,
+        'max_hp': character.max_hp,
+        'max_mp': character.max_mp,
+        'stealthy_used': character.stealthy_used,
+        'traits': [
+            {
+                'id': ct.trait.id,
+                'name': ct.trait.name,
+                'description': ct.trait.description
+            }
+            for ct in character.character_traits.select_related('trait').all()
+        ]
+    }
+
     # If game is over (victory or defeat), return minimal state
     if status != 'playing':
         return {
             'area': character.current_area,
-            'actions': [],
-            'character_stats': {
-                'hp': character.hp if status == 'victory' else 0,
-                'mp': character.mp,
-                'gp': character.gp,
-                'max_hp': character.max_hp,
-                'max_mp': character.max_mp,
-            },
+            'character_stats': character_stats,
             'can_use_stealthy': False,
             'game_status': status
         }
@@ -38,7 +52,7 @@ def get_game_state(character):
     # Normal gameplay
     actions = Action.objects.filter(area=character.current_area)
     can_use_stealthy = (
-        not character.stealthy_used and
+        character.stealthy_used < 3 and
         character.character_traits.filter(trait__name='Stealthy').exists() and
         character.current_area.area_number >= 1 and
         character.current_area.area_number < 40
@@ -46,14 +60,7 @@ def get_game_state(character):
 
     return {
         'area': character.current_area,
-        'actions': actions,
-        'character_stats': {
-            'hp': character.hp,
-            'mp': character.mp,
-            'gp': character.gp,
-            'max_hp': character.max_hp,
-            'max_mp': character.max_mp,
-        },
+        'character_stats': character_stats,
         'can_use_stealthy': can_use_stealthy,
         'game_status': 'playing'
     }
@@ -80,17 +87,28 @@ def apply_outcome(character, damage, hp_reward, mp_reward, gp_reward, new_area):
 
 
 def execute_safe_action(character, action):
-    """Execute a safe action - simple advancement with no rolls"""
+    """Execute a safe action - simple advancement"""
 
-    # Apply outcome (no damage, no rewards for safe actions)
+    # Get rewards from action (for victory only)
+    gp_reward = action.success_gp_reward if action.success_gp_reward else 0
+
+    # Apply outcome
     apply_outcome(
         character=character,
         damage=0,
         hp_reward=0,
         mp_reward=0,
-        gp_reward=0,
+        gp_reward=gp_reward,
         new_area=action.destination_area
     )
+
+    # Capture final GP and status before potential reset
+    final_gp = character.gp
+    game_status = check_game_status(character)
+
+    # Reset if victory
+    if game_status == 'victory':
+        character.reset_to_defaults()
 
     return {
         'outcome_text': action.success_text if action.success_text else "You proceed safely.",
@@ -100,10 +118,11 @@ def execute_safe_action(character, action):
         'stat_changes': {
             'hp': 0,
             'mp': 0,
-            'gp': 0
+            'gp': gp_reward
         },
         'new_area_number': action.destination_area.area_number,
-        'game_status': check_game_status(character)
+        'game_status': game_status,
+        'final_gp': final_gp
     }
 
 
@@ -181,6 +200,14 @@ def execute_risky_action(character, action):
         new_area=action.destination_area,
     )
 
+    # Capture final GP and check status BEFORE reset
+    final_gp = character.gp
+    game_status = check_game_status(character)
+
+    # Check if character died from damage and reset
+    if character.hp <= 0:
+        character.reset_to_defaults()
+
     return {
         'outcome_text': outcome_text,
         'lucky_procced': lucky_procced,
@@ -192,7 +219,8 @@ def execute_risky_action(character, action):
             'gp': gp_reward
         },
         'new_area_number': action.destination_area.area_number,
-        'game_status': check_game_status(character)
+        'game_status': game_status,
+        'final_gp': final_gp
     }
 
 
@@ -248,17 +276,17 @@ def execute_magic_action(character, action):
 
 
 def execute_stealthy(character):
-    """Execute Stealthy trait - bypass area using safe action's destination"""
+    """Execute Stealthy trait - advance to highest numbered destination"""
 
-    # Find safe action for current area
-    safe_action = Action.objects.get(
-        area=character.current_area,
-        action_type='safe'
-    )
+    # Get all actions for current area
+    actions = Action.objects.filter(area=character.current_area)
 
-    # Advance to safe action's destination
-    character.current_area = safe_action.destination_area
-    character.stealthy_used = True
+    # Find the action with the highest destination area number
+    highest_action = max(actions, key=lambda a: a.destination_area.area_number)
+
+    # Advance to highest destination
+    character.current_area = highest_action.destination_area
+    character.stealthy_used += 1  # Increment counter
     character.save()
 
     return {
@@ -271,7 +299,7 @@ def execute_stealthy(character):
             'mp': 0,
             'gp': 0
         },
-        'new_area_number': safe_action.destination_area.area_number,
+        'new_area_number': highest_action.destination_area.area_number,
         'game_status': check_game_status(character)
     }
 

@@ -59,3 +59,22 @@ def character_detail(request, character_id):
         # Delete the character
         character.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def set_active_character(request, character_id):
+    """Set a character as the active character for the authenticated user"""
+    try:
+        # Get character only if it belongs to auth user
+        character = Character.objects.get(pk=character_id, user=request.user)
+    except Character.DoesNotExist:
+        return Response(
+            {'error': "Character not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    # Set this character as active
+    character.set_active()
+
+    serializer = CharacterSerializer(character)
+    return Response(serializer.data)

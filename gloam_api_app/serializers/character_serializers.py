@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Character, CharacterType, Trait, CharacterTrait
+from ..models import Character, Trait, CharacterTrait
 
 
 class CharacterSerializer(serializers.ModelSerializer):
@@ -95,6 +95,7 @@ class CharacterSerializer(serializers.ModelSerializer):
         if character_changed or trait_ids is not None:
             instance.hp = instance.character_type.max_hp
             instance.mp = instance.character_type.max_mp
+            instance.gp = 0
             instance.current_area_id = 1
 
         # Update traits if provided
@@ -105,4 +106,5 @@ class CharacterSerializer(serializers.ModelSerializer):
             for trait_id in trait_ids:
                 CharacterTrait.objects.create(character=instance, trait_id=trait_id)
 
+        instance.save()
         return instance

@@ -58,5 +58,6 @@ class ActionResultSerializer(serializers.Serializer):
     stat_changes = serializers.DictField(read_only=True)
     new_area_number = serializers.IntegerField(read_only=True)
     game_status = serializers.CharField(read_only=True)
+    final_gp = serializers.IntegerField(read_only=True, required=False)
 
     # Optional error field
