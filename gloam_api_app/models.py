@@ -93,7 +93,7 @@ class Character(models.Model):
         Area, on_delete=models.PROTECT, related_name="characters", null=True, blank=True
     )
     is_active = models.BooleanField(default=False)
-    stealthy_used = models.BooleanField(default=False)
+    stealthy_used = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
         """Set HP, MP, and starting area on creation if not provided"""
@@ -137,7 +137,7 @@ class Character(models.Model):
         self.mp = self.character_type.max_mp
         self.gp = 0
         self.current_area_id = 1
-        self.stealthy_used = False
+        self.stealthy_used = 0
         self.save()
 
     def __str__(self):
