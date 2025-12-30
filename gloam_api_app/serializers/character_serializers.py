@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Character, CharacterType, Trait, CharacterTrait, Area
+from ..models import Character, CharacterType, Trait, CharacterTrait
 
 
 class CharacterSerializer(serializers.ModelSerializer):
@@ -32,16 +32,26 @@ class CharacterSerializer(serializers.ModelSerializer):
             "character_type_name",
             "hp",
             "mp",
+            "gp",
             "max_hp",
             "max_mp",
             "current_area",
             "is_active",
+            "stealthy_used",
             "trait_ids",
             "traits",
         ]
-        read_only_fields = ["id", "hp", "mp", "current_area", "is_active"]
+        read_only_fields = [
+            "id",
+            "hp",
+            "mp",
+            "gp",
+            "current_area",
+            "is_active",
+            "stealthy_used",
+        ]
         extra_kwargs = {
-            'user': {'write_only': True},  # User is write-only (don't show in responses)
+            "user": {"write_only": True},
         }
 
     def get_traits(self, obj):
@@ -76,7 +86,7 @@ class CharacterSerializer(serializers.ModelSerializer):
 
         # Update basic fields
         for attr, value in validated_data.items():
-            if attr not in ['user', 'name']:
+            if attr not in ["user", "name"]:
                 if getattr(instance, attr) != value:
                     character_changed = True
                     setattr(instance, attr, value)
@@ -87,8 +97,6 @@ class CharacterSerializer(serializers.ModelSerializer):
             instance.mp = instance.character_type.max_mp
             instance.current_area_id = 1
 
-        instance.save()
-
         # Update traits if provided
         if trait_ids is not None:
             # Remove existing traits
@@ -98,20 +106,3 @@ class CharacterSerializer(serializers.ModelSerializer):
                 CharacterTrait.objects.create(character=instance, trait_id=trait_id)
 
         return instance
-
-
-class CharacterTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CharacterType
-        fields = ["id", "name", "max_hp", "max_mp"]
-
-
-class TraitSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Trait
-        fields = ["id", "name", "description"]
-
-class AreaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Area
-        fields = ["id", "name", "description"]
