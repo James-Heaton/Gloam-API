@@ -32,23 +32,23 @@ The backend API for Gloam: The Winding Path, a dark fantasy text-based adventure
 ## Project Structure
 ```
 Gloam-API/
+├── fixtures/               # Game content (areas, actions, traits)
 ├── gloam_api/              # Django project settings
 ├── gloam_api_app/
 │   ├── logic/              # Game engine
 │   │   ├── dice.py         # 2d6 rolls, trait procs
 │   │   └── game_engine.py  # Action execution, state management
+│   ├── migrations/         # Database migrations
 │   ├── models.py           # Database models
 │   ├── serializers/        # DRF serializers
 │   │   ├── character_serializers.py
 │   │   ├── game_serializers.py
 │   │   └── reference_serializers.py
-│   ├── views/              # API endpoints
-│   │   ├── auth.py
-│   │   ├── character_views.py
-│   │   ├── game_views.py
-│   │   └── reference_views.py
-│   └── migrations/         # Database migrations
-├── fixtures/               # Game content (areas, actions, traits)
+│   └── views/              # API endpoints
+│       ├── auth.py
+│       ├── character_views.py
+│       ├── game_views.py
+│       └── reference_views.py
 └── manage.py
 ```
 
