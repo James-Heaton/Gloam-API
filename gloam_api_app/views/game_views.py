@@ -20,7 +20,7 @@ def game_state(request):
         character = Character.objects.get(user=request.user, is_active=True)
     except Character.DoesNotExist:
         return Response(
-            {'error': 'No active character found. Please activate a character first.'},
+            {'error': 'No character found. Please create a character.'},
             status=status.HTTP_404_NOT_FOUND
         )
 
@@ -50,7 +50,7 @@ def execute_game_action(request):
         character = Character.objects.get(user=request.user, is_active=True)
     except Character.DoesNotExist:
         return Response(
-            {'error': 'No active character found. Please activate a character first.'},
+            {'error': 'No character found. Please create a character.'},
             status=status.HTTP_404_NOT_FOUND
         )
 
