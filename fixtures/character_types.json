@@ -1,0 +1,29 @@
+[
+{
+  "model": "gloam_api_app.charactertype",
+  "pk": 1,
+  "fields": {
+    "name": "Fighter",
+    "max_hp": 7,
+    "max_mp": 5
+  }
+},
+{
+  "model": "gloam_api_app.charactertype",
+  "pk": 2,
+  "fields": {
+    "name": "Ranger",
+    "max_hp": 6,
+    "max_mp": 6
+  }
+},
+{
+  "model": "gloam_api_app.charactertype",
+  "pk": 3,
+  "fields": {
+    "name": "Wizard",
+    "max_hp": 5,
+    "max_mp": 7
+  }
+}
+]

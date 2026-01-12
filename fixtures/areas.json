@@ -1,0 +1,209 @@
+[
+{
+  "model": "gloam_api_app.area",
+  "pk": 1,
+  "fields": {
+    "area_number": 1,
+    "name": "The Grand Entrance",
+    "description": "You step into a vast entrance hall, its vaulted ceiling lost in shadow high above. Moonlight streams through shattered stained glass windows, casting fractured colors across the cracked marble floor. The air is cold and still, carrying the faint scent of old stone and something else — something sweet and rotten that makes your stomach turn. A staircase curves upward to your left, its stone balustrade carved with leering faces that seem to follow your movement. Straight ahead, a heavy iron-banded door stands slightly ajar, revealing only darkness beyond. At the center of the hall, in the light of the broken windows, stands a stone altar covered in ancient dust and dried wax."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 5,
+  "fields": {
+    "area_number": 40,
+    "name": "The Treasure Vault",
+    "description": "You push through the final door and stop, breathless. The chamber beyond is vast and circular and so old that it seems to predate the castle itself—a soaring vault with walls of deep blue stone, polished and reflective. Silver stars are inlaid across every surface, and they shine with their own gentle light, filling the space with a soft radiance. At the center of the room, atop a dais of white marble, sits an ancient chest of carved ebony, its lid thrown open to reveal the treasure within: ancient coins stamped with forgotten kings, jeweled crowns, golden chalices, and artifacts of unimaginable worth. Behind the dais, set into the far wall, a shimmering portal swirls with warm golden light and hums with magic—a doorway leading somewhere far from here. You have survived where countless others have perished. The treasure is yours, and the way home awaits."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 6,
+  "fields": {
+    "area_number": 41,
+    "name": "VICTORY",
+    "description": "Congratulations!"
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 7,
+  "fields": {
+    "area_number": 2,
+    "name": "The Hall of Tapestries",
+    "description": "You stand in a long stone hall lined with towering tapestries, their heavy fabric faded almost to gray. Each one depicts a different scene: a crowned king kneeling in submission, a city consumed by fire, a procession of hooded figures carrying something bound and struggling. The air is stale and thick with dust. Halfway down the hall, one tapestry hangs lower than the rest, its bottom edge hanging just above the stone floor. Near the opposite wall rests a low wooden chest, its iron fittings deeply rusted. At the far end of the hall stands an open archway spilling pale light onto the floor."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 8,
+  "fields": {
+    "area_number": 3,
+    "name": "The Whispering Chamber",
+    "description": "This chamber is circular, its domed ceiling rising high above you. Narrow stone slits pierce the walls at uneven intervals, allowing thin beams of light to cut through the gloom. All around you, you hear whispering – discordant, oppressive, and indiscernible. At the center of the chamber lies a shallow stone basin filled with dark, still water. To your left, a hallway stretches away into darkness. Along the far wall, a heavy velvet curtain hangs over something unseen."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 9,
+  "fields": {
+    "area_number": 4,
+    "name": "The Bench of Judgment",
+    "description": "You find yourself in a narrow hall dominated by a massive stone bench carved directly from the wall. Its surface is worn smooth, shaped unmistakably like a place meant for kneeling. Above it, dozens of iron nails are driven into the stone in careful rows, each bearing scraps of rotted cloth or brittle hair. The floor before the bench is stained dark and uneven. At one end of the hall stands a heavy iron door, rusted and slightly ajar. At the other, a steep stair descends into darkness, its steps slick with some unknown oily substance."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 10,
+  "fields": {
+    "area_number": 5,
+    "name": "The Solarium Fountain",
+    "description": "You enter into a tall, open chamber. Arched windows rise along one wall, their glass panes long shattered. Moonlight spills freely across the stone floor. The walls are carved with shallow channels that once guided water, perhaps intended to power some ancient mechanism. At the center of the room stands a cracked stone fountain, its basin etched with geometric symbols and runes that you do not recognize. Near the windows hangs a heavy iron chain bolted directly into the stone. Just beyond the fountain, a low metal grate is set into the floor, its bars intact."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 11,
+  "fields": {
+    "area_number": 6,
+    "name": "The Reflecting Pool",
+    "description": "You enter a quiet chamber with a low stone ceiling. The walls are lined with dark wooden shelves, most of them empty, their contents long since rotted away or stolen. At the center of the room lies a circular pool of dark, perfectly still water, its surface like black glass. The air here is damp and cold, and you can hear the distant sound of water dripping. Along the far wall, a small iron grate allows a thin draft of air to pass through. Something glistens inside it. To your left, a wooden door stands closed but unbarred. Scattered around the pool's edge are several small stone figurines, their features worn smooth by time."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 12,
+  "fields": {
+    "area_number": 7,
+    "name": "The Servants' Quarters",
+    "description": "You step into a long, narrow room divided by rotted wooden partitions. Small cots line the walls, their thin mattresses long since turned to dust and mildew. The air smells of decay and something sharper — old sweat and fear. Near the entrance, a metal ladder leads upward through a small square opening in the ceiling. At the opposite end of the room, a low archway opens into darkness. Against the far wall stands a tall wardrobe, its doors slightly ajar, revealing glimpses of dark fabric within. Scratched into the stone floor near the wardrobe are words you can barely make out: \"Do not look.\""
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 13,
+  "fields": {
+    "area_number": 12,
+    "name": "The Flooded Archive",
+    "description": "You enter a vast chamber lined floor to ceiling with shelves of rotting books and scrolls. The floor is submerged beneath several feet of dark, stagnant water. The smell of mold and decay is overwhelming. At the far end of the room, stone steps rise above the waterline, slick with moisture, leading to a dry platform and an open doorway beyond. To your right, a heavy wooden table stands partially collapsed, its surface covered in soggy parchment and what might have once been valuable texts. On your left, an iron door is set into the wall, badly rusted but apparently intact. Strange symbols are carved into the door's surface."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 14,
+  "fields": {
+    "area_number": 9,
+    "name": "The Shattered Gallery",
+    "description": "You enter a long gallery with walls covered in broken mirrors. Shards of reflective glass litter the floor, crunching beneath your feet with every step. The few mirrors still hanging intact show warped, distorted versions of yourself—stretched, twisted, multiplied. The air feels strange here, thick and disorienting. At the far end of the gallery, a wide archway leads onward, its keystone inlayed with a reflective pentacle. To your left, a large ornate mirror stands completely intact, its gilded frame untarnished by time. To your right, partially hidden beneath fallen debris, you notice the edge of a wooden chest."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 15,
+  "fields": {
+    "area_number": 10,
+    "name": "The Candle Chapel",
+    "description": "You step into a small chapel thick with the smell of melted wax and incense. The heat in this area is stifling. Hundreds of candles burn throughout the room — on the floor, on narrow shelves, clustered on a stone altar at the far end. Their flames flicker in unison despite no breeze, casting dancing shadows across cracked murals depicting hooded figures in prayer. Behind the altar, an iron brazier glows with hot coals, and beside it rests a small metal box with a heavy lock. To your left, a narrow passage leads deeper into a dark, winding hallway. To your right, a confessional booth stands with its curtain drawn."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 16,
+  "fields": {
+    "area_number": 11,
+    "name": "The Bone Garden",
+    "description": "You enter a bizarre chamber where bones have been arranged like a grotesque garden. Skeletal hands reach upward from the floor like pale flowers, ribs arc overhead like trellises, and skulls are stacked in careful pyramids along the walls. In the center of the room stands a pedestal carved from a single massive vertebra, and atop it rests an ornate chalice filled with dark liquid. Along the left wall, a wooden door stands closed, its surface carved in relief depicting images of vines and thorns glistening with accents of crimson. To your right, a section of the bone arrangement forms an arched doorway. The door itself features a single skull at its center."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 17,
+  "fields": {
+    "area_number": 8,
+    "name": "The Starving Hall",
+    "description": "You enter a long banquet hall lined with many empty tables, each with its own chandelier overhead. Dust covers everything in a thick gray blanket. At the far end of the hall, tattered banners hang from the ceiling, their colors faded to near-white. The air smells of must and old decay. To your left, a grand archway opens into darkness beyond. To your right, a wide stone fireplace dominates the wall, its hearth cold and full of old ash. Scattered across the tables are several silver candlesticks, tarnished but still intact, their candles long since melted to nothing."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 18,
+  "fields": {
+    "area_number": 13,
+    "name": "The Prisoner's Walk",
+    "description": "You enter a narrow corridor lined with iron-barred cells on both sides. The doors hang open, rusted and broken, revealing cramped spaces barely large enough to lie down in. The stone walls are covered in desperate scratches — marks counting days, prayers to forgotten gods, names carved deep into the rock. The air is thick with the smell of old despair. To your left, one cell has collapsed entirely, its bars and wall reduced to rubble that spills into the corridor. To your right, the final cell on the row has strange symbols painted on its walls in what looks like dried blood. At the far end of the corridor, a heavy wooden door reinforced with iron bands stands closed. The door has what appears to be a large X carved into it."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 19,
+  "fields": {
+    "area_number": 14,
+    "name": "The Ritual Chamber",
+    "description": "You enter a circular chamber carved from black stone that seems to absorb the light. The floor is etched with concentric circles of runes that pulse with a faint, sickly green glow. The air is thick and oppressive, making each breath feel labored. Candles burn in alcoves around the room, their flames an unnatural blue color that provides no warmth. In the center of the chamber stands an altar of obsidian, its surface stained dark with centuries of blood. You see grooves etched into it, forming symbols of dark geometry that culminate in the shape of a hand. To your left, an iron door stands slightly ajar. You cannot see where it leads. To your right, a narrow spiral staircase descends deeper into the castle."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 20,
+  "fields": {
+    "area_number": 15,
+    "name": "The Fleshcrafter's Laboratory",
+    "description": "You enter a chamber that reeks of preservatives and decay. Long metal tables line the room, their surfaces stained with old blood and littered with rusted surgical instruments. Glass jars containing grotesque specimens—organs, malformed limbs, things you cannot identify—line shelves along the walls, their contents floating in yellowed fluid. The floor is slick with something dark and sticky. Something about the arrangement of tables and instruments suggests this place was used recently. At the far end of the room, a heavy wooden cabinet stands with its doors chained shut. To your left, a wide archway leads onward. To your right, a narrow chute descends into darkness, its metal edges worn smooth."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 21,
+  "fields": {
+    "area_number": 16,
+    "name": "The Gallows Court",
+    "description": "You enter a tall chamber with a vaulted ceiling disappearing into shadow. Seven nooses hang from iron chains bolted to the ceiling beams, swaying gently despite no breeze. The floor beneath them is dark with old stains. Stone benches line the walls like a courtroom gallery, facing a raised platform where a judge's podium once stood — now toppled and broken. The air feels heavy, oppressive, as if the weight of unjust sentences still lingers here. To your left, a barred gate stands rusted open. To your right, a ladder leads up to a scaffolding that runs along the wall near the ceiling. At the base of the broken podium, you notice a leather-bound ledger lying open, its pages covered in careful handwriting."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 22,
+  "fields": {
+    "area_number": 17,
+    "name": "The Hunting Gallery",
+    "description": "You enter a long hall lined with mounted animal heads with glassy eyes — stags, boars, wolves, and stranger things you cannot name. Taxidermied creatures stand on pedestals throughout the room in lifelike poses: a bear rearing on its hind legs, a massive cat frozen mid-pounce. The air smells of dust and old fur. At the far end of the hall, large double doors stand closed. To your left, a narrow servants' passage runs along the wall. To your right, display cases filled with hunting trophies — claws, fangs, preserved wings — line the wall. As you step into the room, you hear something move. Several of the creatures have shifted position. They’re watching you."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 23,
+  "fields": {
+    "area_number": 18,
+    "name": "The Bleeding Walls",
+    "description": "You step into a corridor where the stone walls weep. Dark liquid seeps from cracks in the masonry, pooling on the floor in thick, viscous puddles. The smell is unmistakably iron — blood, though whether it's fresh or ancient, you cannot tell. The walls themselves seem to pulse faintly, as if breathing. Symbols are carved into the stone at irregular intervals, each one surrounded by a wet crimson stain. To your left, a section of wall has partially collapsed, revealing a dark space beyond. To your right, a heavy stone door bears a circular relief carved with concentric rings, each one weeping blood into the grooves below. At the far end of the corridor, an archway leads onward."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 24,
+  "fields": {
+    "area_number": 19,
+    "name": "The Forge of Chains",
+    "description": "You enter a sweltering chamber dominated by a massive stone forge that still radiates heat despite its cold coals. The walls are lined with anvils and workbenches covered in half-finished chains of every size — delicate silver links, massive iron shackles, chains so fine they look like thread. The floor is littered with metal scraps and broken tools. The air shimmers with residual heat and smells of scorched metal and coal. To your right, a heavy iron vault door stands sealed, its surface covered in hammered designs of interlocking links. To your left, another door stand ajar. This one wooden and charred, its frame blackened by soot. Hanging from the ceiling on thick chains is a massive iron cage, swaying slightly, with something glinting inside."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 25,
+  "fields": {
+    "area_number": 20,
+    "name": "The Clockwork Court",
+    "description": "You enter a circular chamber filled with life-sized mechanical figures frozen in tableau, their jointed limbs locked mid-gesture. A copper knight stands at attention, sword in sheath. Brass courtiers bow in elaborate curtseys, their painted eyes staring straight ahead. A crowned automaton sits on a throne at the center, its scepter raised as if about to pronounce judgment. The floor is covered in gears, springs, and other mechanical parts that crunch beneath your feet. To your left, a control panel covered in levers and switches is mounted on the wall. To your right, a narrow maintenance shaft descends into the floor. Straight ahead, ornate double doors stand closed, their surfaces decorated with mechanical reliefs of dancing figures."
+  }
+},
+{
+  "model": "gloam_api_app.area",
+  "pk": 26,
+  "fields": {
+    "area_number": 21,
+    "name": "The Well",
+    "description": "You enter a circular chamber dominated by a deep stone well in its center. The walls in the room are slick with moisture, and water drips steadily from cracks in the ceiling, pooling on the uneven floor. The well is wide enough to swallow a person whole, about ten feet across, and you can hear water sloshing in the unseen depths below. Iron chains hang from hooks along the rim, each ending in rusted manacles. Along the well’s inner wall you see carved steps spiraling down into darkness. To your left, a metal gate stands partially open, its bars slick with condensation. To your right, a raised stone platform holds what appears to be a winch mechanism connected to one of the chains."
+  }
+}
+]

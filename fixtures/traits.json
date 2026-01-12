@@ -1,0 +1,34 @@
+[
+{
+  "model": "gloam_api_app.trait",
+  "pk": 1,
+  "fields": {
+    "name": "Lucky",
+    "description": "35% chance for +1 to risky action rolls"
+  }
+},
+{
+  "model": "gloam_api_app.trait",
+  "pk": 2,
+  "fields": {
+    "name": "Strong",
+    "description": "25% chance to reduce damage by 1 when harmed"
+  }
+},
+{
+  "model": "gloam_api_app.trait",
+  "pk": 3,
+  "fields": {
+    "name": "Wise",
+    "description": "25% chance to refund 1 MP when using magic"
+  }
+},
+{
+  "model": "gloam_api_app.trait",
+  "pk": 4,
+  "fields": {
+    "name": "Stealthy",
+    "description": "Ability to bypass an area safely (3 uses)"
+  }
+}
+]
